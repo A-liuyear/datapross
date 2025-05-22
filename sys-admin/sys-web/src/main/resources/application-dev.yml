@@ -1,0 +1,122 @@
+server:
+  port: 8089
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.122.46.203:3306/smart_bi?serverTimezone=Asia/Shanghai
+    username: root
+    password: AliyunMysql@123
+  jackson:
+    time-zone: GMT+8
+  redis:
+    cluster:
+      pool:
+        max-active: 200
+        min-idle: 20
+        max-idle: 50
+        max-wait: -1
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      password:
+  rabbitmq:
+    host: 47.122.46.203
+    port: 5672
+    username: aly
+    password: aly@123
+    virtual-host: /
+
+    # 可选配置
+    listener:
+      simple:
+        prefetch: 10 # 每个消费者最大预取消息数量
+        concurrency: 5 # 最小消费者数量
+        max-concurrency: 10 # 最大消费者数量
+        acknowledge-mode: auto # 确认模式：auto, manual, none
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 500MB
+  mail:
+    host: smtp.163.com
+    port: 465
+    username: 19939406893@163.com
+    toUser: 19939406893@163.com
+    password: HLSMwi6Hc9FHRTtr
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+            port: 465
+            fallback: false
+          ssl:
+            enable: true
+          auth: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+          debug: true  # 可选，开启调试模式
+  # 本地
+  #  minio:
+  #    access-key: q7Lze5GZF9vZXgZm12W2
+  #    secret-key: vCfiz0SjZ3KVB2qMSvXpWlmrzZCvneZWzKCtlW86
+  #    url: http://127.0.0.1:9005/
+  #    bucket-name: databi
+  minio:
+    access-key: j0fQDlpeZbDpR6SYKTjo
+    secret-key: CsZL1ephS2FGCVI1nImHuT5Ohh9LvihtCt4RzvPb
+    url: http://23.95.35.206:9090/
+    bucket-name: databi
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      update-strategy: not_empty
+
+jwt:
+  issuer: admin
+  secret: com.sysadmin
+  expiration: 30
+
+web:
+  loadPath: D://images/
+
+############## Sa-Token 配置 (文档: https://sa-token.cc) ##############
+sa-token:
+   # token 名称（同时也是 cookie 名称）
+  token-name: token
+   # token 有效期（单位：秒） 默认30天，-1 代表永久有效
+  timeout: 2592000
+   # token 最低活跃频率（单位：秒），如果 token 超过此时间没有访问系统就会被冻结，默认-1 代表不限制，永不冻结
+  active-timeout: -1
+   # 是否允许同一账号多地同时登录 （为 true 时允许一起登录, 为 false 时新登录挤掉旧登录）
+  is-concurrent: false
+   # 在多人登录同一账号时，是否共用一个 token （为 true 时所有登录共用一个 token, 为 false 时每次登录新建一个 token）
+  is-share: true
+   # token 风格（默认可取值：uuid、simple-uuid、random-32、random-64、random-128、tik）
+  token-style: uuid
+   # 是否输出操作日志
+  is-log: true
+  #是否尝试从cookie里读取token
+  is-read-cookie: false
+  #是否尝试从header里读取token
+  is-read-header: true
+
+zhipu:
+  key: 4e70019595494f7b974bf17dc66b14ac.6VnyiEkFpvsAxlTO
+
+dashscope:
+  api-key: sk-2c446d0303014f6dba5b9df727bc46e1
+
+
+
+
+
+
+
